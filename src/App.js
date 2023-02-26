@@ -15,6 +15,7 @@ function App() {
     const read_data = localStorage.getItem("words");
     if(read_data && reset == false){
       console.log("READ DATA")
+      console.log(JSON.parse(read_data))
       setWordsJSON(JSON.parse(read_data))
     }else{
       console.log("requesting new data")
@@ -32,6 +33,7 @@ function App() {
         })
         localStorage.setItem("words", JSON.stringify(words));
         setWordsJSON(words)
+        console.log(words)
       });
     }
   }
