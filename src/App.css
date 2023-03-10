@@ -23,6 +23,31 @@ body{
   font-size: 25px;
 }
 
+.words_button1{
+  background-color: aquamarine;
+  border: rgb(70, 123, 105) 4px solid;
+  border-radius: 15px;
+  padding: 10px;
+  cursor: pointer;
+  position: fixed;
+  left: 300px;
+  bottom: 50px;
+  font-size: 25px;
+}
+
+.idioms_button1{
+  background-color: aquamarine;
+  border: rgb(70, 123, 105) 4px solid;
+  border-radius: 15px;
+  padding: 10px;
+  cursor: pointer;
+  position: fixed;
+  left: 420px;
+  bottom: 50px;
+  font-size: 25px;
+}
+
+
 .card{
   width: 800px;
   height: 600px;

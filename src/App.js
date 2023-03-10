@@ -10,8 +10,10 @@ function App() {
 
   const [wordsJSON, setWordsJSON] = useState("");
   const [randomWord, setRandomWord] = useState();
+  const [type, setType] = useState("WORDS_1_TYPE"); // used for telling which columns to use as an input
+
   
-  function getData(reset){
+  function getData(reset, new_type=""){
     const read_data = localStorage.getItem("words");
     if(read_data && reset == false){
       console.log("READ DATA")
@@ -25,11 +27,26 @@ function App() {
         // csv is .csv string
         var data = Papa.parse(csv).data; // parsing csv to json, which is list of lists representing each row
         data.shift() // removing header
-  
+        
+        if(!new_type){
+          new_type = type
+        }
+
+        let a, b;
+        if(new_type == "WORDS_1_TYPE"){
+          a = 0;
+          b = 1;
+        }else if(new_type == "IDIOMS_1_TYPE"){
+          a = 3;
+          b = 4;
+        }
+
         let words = [] // long list of 2-element lists, where [0]th is english and [1]th element is polish
         data.forEach(function (item, index) {
-          let word = [item[0], item[1]]
-          words.push(word)
+          if(item[a] && item[b]){
+            let word = [item[a], item[b]]
+            words.push(word)
+          }
         })
         localStorage.setItem("words", JSON.stringify(words));
         setWordsJSON(words)
@@ -55,12 +72,19 @@ function App() {
   }, []);
   pickRandomWord()
 
+  function switchType(new_type){
+    setType(new_type)
+    getData(true, new_type)
+  }
+
   let website;
   if (randomWord){
     website = (
       <div>
         <Card word={randomWord} pickRandomWord={pickRandomWord} />
         <button className='reset_button' onClick={() => getData(true)}> reset cache </button>
+        <button className='words_button1' onClick={() => switchType("WORDS_1_TYPE")}> words 1 </button>
+        <button className='idioms_button1' onClick={() => switchType("IDIOMS_1_TYPE")}> idioms 1 </button>
       </div>
     )
   }else{
