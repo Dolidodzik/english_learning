@@ -32,19 +32,20 @@ function App() {
           new_type = type
         }
 
-        let a, b;
+        let a, b, c;
         if(new_type == "WORDS_1_TYPE"){
           a = 0;
           b = 1;
+          c = 2;
         }else if(new_type == "IDIOMS_1_TYPE"){
-          a = 3;
-          b = 4;
+          a = 4;
+          b = 5;
         }
 
-        let words = [] // long list of 2-element lists, where [0]th is english and [1]th element is polish
+        let words = [] // long list of 2(or3)-element lists, where [0]th is english and [1]th element is polish, 3rd element is example usage of given word and it's optional field
         data.forEach(function (item, index) {
           if(item[a] && item[b]){
-            let word = [item[a], item[b]]
+            let word = [item[a], item[b], item[c]]
             words.push(word)
           }
         })
