@@ -22,9 +22,11 @@ function Card(props) {
 
   return (
     <div className="card">
-        
+        {props.word[2] && 
+          <h4 className="explanation_note"> explanation aviable! </h4>      
+        }      
         <h1> {props.word[side]} </h1>
-
+    
         <div className='button_container'>
             <div className='div1' onClick={() => props.pickRandomWord(true)}> new word </div>
             <div className='div2' onClick={() => switchSide()}> flip the card </div>

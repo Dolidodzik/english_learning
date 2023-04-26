@@ -35,6 +35,15 @@ body{
   font-size: 25px;
 }
 
+.explanation_note{
+  text-align: left;
+  padding: 10px;
+  margin: 0;
+  top: 15;
+  left: 15;
+  position: absolute;
+}
+
 .idioms_button1{
   background-color: aquamarine;
   border: rgb(70, 123, 105) 4px solid;
@@ -67,7 +76,7 @@ body{
   font-size: 30px;
   width: 170px;
   float: left;
-  margin-top: 130px;
+  margin-top: 90px;
 }
 
 .div1{
